@@ -7,7 +7,7 @@
     <style type="text/css">
       <!--
           body { color:#222; margin:20px 0 40px;
-                 font-family: "ヒラギノ角ゴ Pro W3", Arial, Helvetica;
+                 font-family: Arial, Helvetica;
                  line-height:1.6; }
           .wrapper{
             max-width:900px;

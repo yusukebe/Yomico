@@ -53,7 +53,8 @@ sub render_content {
 
 sub local_or_share_file {
     my ( $self, $name ) = @_;
-    return $name if -f $name;
+    my $local_name = File::Spec->catfile('share', $name);
+    return $local_name if -f $local_name;
     return dist_file( 'Yomico', $name );
 }
 
