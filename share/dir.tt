@@ -1,0 +1,10 @@
+<h1>[% path %]</h1>
+
+<ul>
+[% FOREACH child IN children -%]
+<li><a href="[% child.path %]">[% child.class %]</a></li>
+[% END -%]
+</ul>
+
+<hr />
+<address>Yomico... Yet Another Markdown Viewer</address>

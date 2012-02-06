@@ -26,9 +26,49 @@ sub app {
             my $mkdn = $file->slurp;
             my $html = markdown( $mkdn );
             return $self->render_content( $html );
+        }else{
+            unless ( -d $path ) {
+                return $self->return_404;
+            }
+            my $dir = dir($path);
+            my @children;
+            for my $file ($dir->children){
+                if( -d $file || $self->is_markdown($file) ) {
+                    push @children,
+                      { class => $file, path => $req->base . $self->root_from_path($file) };
+                }
+            }
+            my $html =  $self->render_args( 'dir.tt',
+                { path => $path, children => \@children } );
+            return $self->render_content($html);
         }
         return [ 200, [ 'Content-Type' => 'text/html' ], [$path] ];
     }
+}
+
+sub root_from_path {
+    my ( $self, $file ) = @_;
+    my @root_dirs = File::Spec->splitdir($self->{root}->absolute);
+    my @file_dirs = File::Spec->splitdir($file->absolute);
+    my @result;
+    for (my $i = 0; $i < scalar @file_dirs; $i++ ) {
+        if($root_dirs[$i] && $root_dirs[$i] eq $file_dirs[$i]) {
+            #
+        }else{
+            push @result, $file_dirs[$i];
+        }
+    }
+    my $new_path = File::Spec->catfile(@result);
+    $new_path =~ s!^/!!;
+    return $new_path;
+}
+
+sub render_args {
+    my ( $self, $template, $args ) = @_;
+    my $template_content = file( $self->local_or_share_file($template) )->slurp;
+    my $tx = Text::Xslate->new( syntax => 'TTerse', );
+    my $html = $tx->render_string( $template_content, $args );
+    return $html;
 }
 
 sub render_content {
@@ -51,6 +91,10 @@ sub render_content {
         [ 'Content-Type' => 'text/html', 'Content-Length' => length $html ],
         [$html]
     ];
+}
+
+sub return_404 {
+    return [ 404, [ 'Content-Type' => 'text/html' ], ['Not Found'] ];
 }
 
 sub local_or_share_file {
