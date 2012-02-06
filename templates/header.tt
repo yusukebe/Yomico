@@ -3,14 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Yomico... Yet Another Markdown Viewer</title>
-    <link href="https://raw.github.com/csswizardry/inuit.css/master/core/css/inuit.css" rel="stylesheet">
     <style type="text/css">
       <!--
-          body { color:#222; margin:20px 0; }
+          body { color:#222; margin:20px 0; line-height:1.6; }
           .wrapper{
-          max-width:940px;
-          margin:0 auto;
-          padding:0 10px;
+            max-width:900px;
+            margin:0 auto;
+            padding:0 10px;
           }
         -->
     </style>
