@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Yomico... Yet Another Markdown Viewer</title>
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="https://raw.github.com/csswizardry/inuit.css/master/core/css/inuit.css" rel="stylesheet">
+    <style type="text/css">
+      <!--
+          body { color:#222; margin:20px 0; }
+          .wrapper{
+          max-width:940px;
+          margin:0 auto;
+          padding:0 10px;
+          }
+        -->
+    </style>
   </head>
   <body>
-    <div class="container">
-   
+    <div class="wrapper">
