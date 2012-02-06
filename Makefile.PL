@@ -8,6 +8,7 @@ requires 'Text::Xslate';
 requires 'Path::Class';
 
 install_script 'yomico';
+install_share 'share';
 
 tests 't/*.t';
 author_tests 'xt';
