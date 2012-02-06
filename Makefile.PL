@@ -2,7 +2,10 @@ use inc::Module::Install;
 name 'Yomico';
 all_from 'lib/Yomico.pm';
 
-# requires '';
+requires 'Plack';
+requires 'Text::Markdown';
+requires 'Text::Xslate';
+requires 'Path::Class';
 
 tests 't/*.t';
 author_tests 'xt';
