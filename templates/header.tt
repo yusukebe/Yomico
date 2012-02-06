@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Yomico... Yet Another Markdown Viewer</title>
+    <link rel="stylesheet" href="http://yusukebe.github.com/Yomico/css/inuit.css" type="text/css"/>
     <style type="text/css">
       <!--
-          body { color:#222; margin:20px 0; line-height:1.6; }
+          body { color:#222; margin:20px 0 40px;
+                 font-family: "ヒラギノ角ゴ Pro W3", Arial, Helvetica;
+                 line-height:1.6; }
           .wrapper{
             max-width:900px;
             margin:0 auto;
