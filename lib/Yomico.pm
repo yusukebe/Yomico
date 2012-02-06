@@ -8,18 +8,6 @@ use Plack::Runner;
 
 our $VERSION = '0.01';
 
-sub base_dir {
-    my $path = ref $_[0] || $_[0];
-    $path =~ s!::!/!g;
-    if ( my $libpath = $INC{"$path.pm"} ) {
-        $libpath =~ s!(?:blib/)?lib/+$path\.pm$!!;
-        File::Spec->rel2abs( $libpath || './' );
-    }
-    else {
-        File::Spec->rel2abs('./');
-    }
-}
-
 sub new {
     my ( $class, %opt ) = @_;
     croak "new method requred doc opt" unless $opt{doc};

@@ -5,7 +5,6 @@ use Path::Class qw/file dir/;
 use Plack::Request;
 use File::Spec;
 use Text::Markdown qw/markdown/;
-use Yomico;
 use Text::Xslate qw/mark_raw/;
 use File::ShareDir qw/dist_file/;
 
@@ -28,7 +27,7 @@ sub app {
             my $html = markdown( $mkdn );
             return $self->render_content( $html );
         }
-        return [200, ['Content-Type' => 'text/html' ] , [$path] ];
+        return [ 200, [ 'Content-Type' => 'text/html' ], [$path] ];
     }
 }
 
@@ -47,8 +46,11 @@ sub render_content {
             footer  => mark_raw($footer),
         }
     );
-    return [ 200, [ 'Content-Type' => 'text/html', 'Content-Length' => length $html],
-             [$html] ];
+    return [
+        200,
+        [ 'Content-Type' => 'text/html', 'Content-Length' => length $html ],
+        [$html]
+    ];
 }
 
 sub local_or_share_file {
