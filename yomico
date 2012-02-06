@@ -21,10 +21,10 @@ __END__
 
 =head1 NAME
 
-yomico.pl - Yet Another Markdown Viewer.
+yomico - Command line script for Yomico.
 
 =head1 SYNOPSIS
 
-yomico.pl [options] [file or directory ...]
+yomico [options] [file or directory ...]
 
 =cut

@@ -1,8 +1,43 @@
 # Yomico - もう一つのMarkdownビューアー
 
 Yomico（よみこ）はPerl製のMarkdownビューアーです。
+手元にあるMarkdownファイルを素早くプレビューするために作られました。
+このREADMEファイルもMarkdownで記述されていますが、
+Yomicoでプレビューしつつ書いています。
 
 ## インストール
+
+YomicoはPerlモジュールとスクリプトで成り立っています。また、github上で公開をしています。
+インストールには以下のコマンドを参考にしてください。
+
+    $ git clone git://github.com/yusukebe/Yomico.git
+
+    $ cd Yomico
+
+    $ cpanm .
+
+## 使い方
+
+インストールが終わると「yomico」コマンドがシステム内で使えるようになります。
+yomicoコマンドでMarkdownファイル、もしくはディレクトリを指定すると（現在未実装）起動します。
+
+    $ yomico README.mkdn
+
+> http://localhost:5000
+
+にアクセスしてください。Markdownが整形されて見られているはずです。
+
+### 起動オプション
+
+ポートを変更するには「-p」オプションで指定してください。
+
+    $ yomico -p 8080 README.mkdn
+
+## TODO
+
+- ディレクトリ対応
+- カスタムCSS対応
+- google-prettyprintなどシンタックスハイライト対応
 
 ## ライセンス
 

@@ -14,6 +14,8 @@
             margin:0 auto;
             padding:0 10px;
           }
+          pre { padding: 1em; border:1px solid #ccc; }
+          blockquote { padding: 1em; }
         -->
     </style>
   </head>

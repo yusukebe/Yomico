@@ -7,6 +7,8 @@ requires 'Text::Markdown';
 requires 'Text::Xslate';
 requires 'Path::Class';
 
+install_script 'yomico';
+
 tests 't/*.t';
 author_tests 'xt';
 
