@@ -1,4 +1,9 @@
 use strict;
-use Test::More tests => 1;
+use Test::More;
 
-BEGIN { use_ok 'Yomico' }
+BEGIN { 
+    use_ok 'Yomico';
+    use_ok 'Yomico::Web';
+}
+
+done_testing;
