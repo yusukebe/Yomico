@@ -14,8 +14,7 @@
             margin:0 auto;
             padding:0 10px;
           }
-          pre { padding: 1em; border:1px solid #ccc; }
-          pre code { font-size: 14px; line-height:20px; }
+          pre { padding: 1em; border:1px solid #ccc; font-size: 14px; line-height:20px; }
           blockquote { padding: 1em; font-style:italic; }
           blockquote p:last-of-type:after , blockquote p:before{ content: no-close-quote; }
         -->
