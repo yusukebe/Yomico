@@ -9,4 +9,8 @@ nytprof.out
 MANIFEST.bak
 *.sw[po]
 MYMETA.*
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
 doc/*
