@@ -20,6 +20,9 @@ sub app {
         my $env = shift;
         my $req = Plack::Request->new( $env );
         my $path_info = $req->path_info;
+        if( $self->is_static($path_info) ) {
+            return $self->render_static($path_info);
+        }
         my $path = $self->make_path($path_info);
         if( $self->is_markdown($path) ) {
             my $file = file( $path );
@@ -97,6 +100,26 @@ sub return_404 {
     return [ 404, [ 'Content-Type' => 'text/html' ], ['Not Found'] ];
 }
 
+sub render_static {
+    my ( $self, $path_info) = @_;
+    $path_info =~ s!^/!!;
+    my $file_path = $self->local_or_share_file(['static', $path_info]);
+    return $self->return_404() unless -f $file_path;
+    my $content_type = 'text/plain';
+    #XXX
+    $content_type = 'image/x-icon' if $file_path =~ m!\.ico$!;
+    $content_type = 'text/css' if $file_path =~ m!\.css$!;
+    my $content = file($file_path)->slurp;
+    return [
+        200,
+        [
+            'Content-Length' => length $content,
+            'Content-Type'   => $content_type
+        ],
+        [$content]
+    ];
+}
+
 sub local_or_share_file {
     my ( $self, $files ) = @_;
     my $local_name = File::Spec->catfile('share', @$files );
@@ -116,6 +139,14 @@ sub is_markdown {
     return unless -f $path;
     if( $path =~ m!\.(?:txt|md|mkdn|markdown|mkd|mark|mdown)! ) {
         return $path;
+    }
+    return;
+}
+
+sub is_static {
+    my ( $self, $path_info ) = @_;
+    if( $path_info =~ m!^/(?:favicon\.ico$|images/.+|css/.+)! ) {
+        return $path_info;
     }
     return;
 }
