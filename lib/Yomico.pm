@@ -10,8 +10,8 @@ our $VERSION = '0.01';
 
 sub new {
     my ( $class, %opt ) = @_;
-    croak "new method requred doc opt" unless $opt{doc};
-    croak "opt method must be file or directory path"
+    croak "Error: new method requred doc opt" unless $opt{doc};
+    croak "Error: opt method must be file or directory path"
         unless ( -f $opt{doc} || -d $opt{doc} );
     my $self = bless { doc => $opt{doc} }, $class;
     $self;
@@ -22,6 +22,7 @@ sub run {
     my $web;
     $web = Yomico::Web->new( root => dir($self->{doc}) ) if -d $self->{doc};
     $web = Yomico::Web->new( root => file($self->{doc}) ) if -f $self->{doc};
+    croak "Error: Yomico::Web instance is undef" unless $web;
     my $app = $web->app;
     my $runner = Plack::Runner->new;
     $runner->parse_options(@$opt);
