@@ -6,7 +6,7 @@ use Yomico::Web;
 use Path::Class qw/file dir/;
 use Plack::Runner;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my ( $class, %opt ) = @_;
