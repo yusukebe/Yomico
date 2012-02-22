@@ -65,7 +65,7 @@ sub root_from_path {
 
 sub render_args {
     my ( $self, $template, $args ) = @_;
-    my $template_content = file( $self->local_or_share_file($template) )->slurp;
+    my $template_content = file( $self->local_or_share_file( ['templates' , $template] ) )->slurp;
     my $tx = Text::Xslate->new( syntax => 'TTerse', );
     my $html = $tx->render_string( $template_content, $args );
     return $html;
@@ -73,8 +73,8 @@ sub render_args {
 
 sub render_content {
     my ( $self, $content_html ) = @_;
-    my $header = file( $self->local_or_share_file('header.tt') )->slurp;
-    my $footer = file( $self->local_or_share_file('footer.tt') )->slurp;
+    my $header = file( $self->local_or_share_file( ['templates','header.tt'] ) )->slurp;
+    my $footer = file( $self->local_or_share_file( ['templates','footer.tt'] ) )->slurp;
     my $tx = Text::Xslate->new(
         syntax => 'TTerse',
     );
@@ -98,10 +98,10 @@ sub return_404 {
 }
 
 sub local_or_share_file {
-    my ( $self, $name ) = @_;
-    my $local_name = File::Spec->catfile('share', $name);
+    my ( $self, $files ) = @_;
+    my $local_name = File::Spec->catfile('share', @$files );
     return $local_name if -f $local_name;
-    return dist_file( 'Yomico', $name );
+    return dist_file( 'Yomico', join('/', @$files) );
 }
 
 sub make_path {
