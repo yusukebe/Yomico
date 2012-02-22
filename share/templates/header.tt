@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Yomico... Yet Another Markdown Viewer</title>
-    <link rel="stylesheet" href="http://yusukebe.github.com/Yomico/css/inuit.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/inuit.css" type="text/css"/>
     <style type="text/css">
       <!--
           body { color:#222; margin:20px 0 40px;
