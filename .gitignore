@@ -5,10 +5,12 @@ blib
 pm_to_blib
 MANIFEST
 Makefile.old
+MYMETA.*
 nytprof.out
 MANIFEST.bak
 *.sw[po]
 MYMETA.*
+inc/
 .DS_Store
 ._*
 .Spotlight-V100
